@@ -10,20 +10,20 @@
 <form method="post" th:action="@{/saveProduct}">
     <div>
         <label class="form-label">name :</label>
-        <input class="form-control" type="text" name="name" >
+        <input class="form-control" type="text" name="name" th:value="${product.name}">
         <span class="text-danger" th:errors ="${product.name}"></span>
     </div>
     <div>
         <label class="form-label">price :</label>
-        <input class="form-control" type="text" name="price">
+        <input class="form-control" type="text" name="price" th:value="${product.price}">
         <span class="text-danger" th:errors="${product.price}"></span>
     </div>
     <div>
         <label class="form-label">quantity :</label>
-        <input class="form-control" type="text" name="quantity">
+        <input class="form-control" type="text" name="quantity" th:value="${product.quantity}">
         <span class="text-danger" th:errors="${product.quantity}"></span>
     </div>
-    <button type="submit" >Add a product</button>
+    <button type="submit" class="btn btn-primary my-4">Add a product</button>
 </form>
 </body>
 </html>

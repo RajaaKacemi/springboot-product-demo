@@ -30,19 +30,19 @@ public class ProductController {
        return "products";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String deleteProduct(@RequestParam Long id){
         productRepository.deleteById(id);
         return "redirect:/products";
     }
 
-    @GetMapping("/addProduct")
+    @GetMapping("/admin/addProduct")
     public String addProduct(Product product, Model model){
-        model.addAttribute(product);
+        model.addAttribute("product", new Product());
         return "new-product";
     }
 
-    @PostMapping("/saveProduct")
+    @PostMapping("/admin/saveProduct")
     public String saveProduct(@Valid Product product , BindingResult bindingResult , Model model){
         if(bindingResult.hasErrors()){
 //            model.addAttribute("Recheck the informations");
@@ -51,6 +51,26 @@ public class ProductController {
         productRepository.save(product);
         return "redirect:/products";
     }
+    @GetMapping("/notAuthorized")
+    public String notAuthorized(){
+        return "not-authorized";
+    }
 
+    @GetMapping("/admin/edit")
+    public String editProduct(@RequestParam Long id, Model model){
+        Product product = productRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Product not found"));
+        model.addAttribute("editProduct", product);
+        return "edit-product";
+    }
+
+    @PostMapping("/admin/saveEditProduct")
+    public String updateProduct(@Valid Product product, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "edit-product";
+
+        };
+        productRepository.save(product);
+        return "redirect:/products";
+    }
 
 }

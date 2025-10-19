@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+
+      xmlns:th="https://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.5/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.3.5/js/bootstrap.bundle.js"></script>
+    <title>Edit Product</title>
+</head>
+<body>
+<form method="post" th:action="@{/admin/saveEditProduct}" >
+
+    <div>
+
+        <label class="form-label">name :</label>
+        <input class="form-control" type="text" name="name" th:value="${editProduct.name}">
+        <span class="text-danger" th:errors ="${editProduct.name}"></span>
+    </div>
+    <div>
+        <label class="form-label">price :</label>
+        <input class="form-control" type="text" name="price" th:value="${editProduct.price}">
+        <span class="text-danger" th:errors="${editProduct.price}"></span>
+    </div>
+    <div>
+        <label class="form-label">quantity :</label>
+        <input class="form-control" type="text" name="quantity" th:value="${editProduct.quantity}">
+        <span class="text-danger" th:errors="${editProduct.quantity}"></span>
+    </div>
+    <button type="submit" class="btn btn-primary my-4">Edit a product</button>
+</form>
+</body>
+</html>
