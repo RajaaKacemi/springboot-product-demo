@@ -10,10 +10,9 @@
     <title>Edit Product</title>
 </head>
 <body>
-<form method="post" th:action="@{/admin/saveEditProduct}" >
+<!--<form method="post" th:action="@{/admin/saveEditProduct}" >
 
     <div>
-
         <label class="form-label">name :</label>
         <input class="form-control" type="text" name="name" th:value="${editProduct.name}">
         <span class="text-danger" th:errors ="${editProduct.name}"></span>
@@ -29,6 +28,32 @@
         <span class="text-danger" th:errors="${editProduct.quantity}"></span>
     </div>
     <button type="submit" class="btn btn-primary my-4">Edit a product</button>
+</form>-->
+
+<form method="post" th:action="@{/admin/saveEditProduct}">
+    <input type="hidden" name="id" th:value="${editProduct.id}">
+
+    <div>
+        <label class="form-label">name :</label>
+        <input class="form-control" type="text" name="name" th:value="${editProduct.name}">
+<!--        <span class="text-danger" th:errors="*{editProduct.name}"></span>-->
+    </div>
+
+    <div>
+        <label class="form-label">price :</label>
+        <input class="form-control" type="text" name="price" th:value="${editProduct.price}">
+<!--        <span class="text-danger" th:errors="*{editProduct.price}"></span>-->
+    </div>
+
+    <div>
+        <label class="form-label">quantity :</label>
+        <input class="form-control" type="text" name="quantity" th:value="${editProduct.quantity}">
+<!--        <span class="text-danger" th:errors="*{editProduct. quantity}"></span>-->
+    </div>
+
+    <button type="submit" class="btn btn-primary my-4">Edit a product</button>
 </form>
+
+
 </body>
 </html>

@@ -11,24 +11,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 
 public class SecurityConfig {
 
-    @Bean
+//    @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+//    @Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         return new InMemoryUserDetailsManager(
                 User.withUsername("Siham").password(passwordEncoder().encode("1234")).roles("ADMIN").build(),
                 User.withUsername("Rajaa").password(passwordEncoder().encode("1234")).roles("USER").build()
         );
     }
-    @Bean
+//    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.formLogin(Customizer.withDefaults())
                 //.csrf(csrf->csrf.disable())

@@ -56,7 +56,7 @@ public class ProductController {
         return "not-authorized";
     }
 
-    @GetMapping("/admin/edit")
+    @GetMapping("/admin/editProduct")
     public String editProduct(@RequestParam Long id, Model model){
         Product product = productRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Product not found"));
         model.addAttribute("editProduct", product);

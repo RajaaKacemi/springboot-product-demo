@@ -1,8 +1,6 @@
 package com.demoproduct.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -25,4 +23,6 @@ public class Product {
     private double price;
     @Min(2)
     private int quantity;
+    @ManyToOne @JoinColumn(name = "category_id")
+    private Category category;
 }
